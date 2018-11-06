@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Admin page</title>
+</head>
+<body>
+<!--HEADER-->
+<nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark">
+        <span>
+            <span class="navbar-brand mb-0 h1">ADMIN PAGE</span>
+            <!--<a style="color:white; alignment: right"  class="text" th:href="@{/logout}">logout</a>-->
+        </span>
+
+    </nav>
+</nav>
+<!--BODY-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <br>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">LOGIN</th>
+                    <th scope="col">PASSWORD</th>
+                    <th scope="col">ROLES</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <!--/*@thymesVar id="users" type=""*/-->
+                <tr th:each="user : ${userList}">
+                    <td th:utext = "${user.id}"></td>
+                    <td th:utext = "${user.name}"></td>
+                    <td th:utext = "${user.login}"></td>
+                    <td th:utext = "${user.password}"></td>
+                    <td th:utext="${user.mockRole}"></td>
+                    <!--<td th:utext = "${#strings.substring-->
+                    <!--(user.roles,1,#strings.indexOf(user.roles,']'))}"></td>-->
+                    <td>
+                        <a type="button" class="btn btn-success" th:href="@{'/users/get/'+${user.id}}">View</a>
+                        <a type="button" class="btn btn-danger" th:href="@{'/users/delete/'+${user.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+            <div class="float-md-right" style="padding-right: 5%">
+                <button class="btn btn-secondary" type="button"
+                        data-toggle="collapse" data-target=".multi-collapse"
+                        aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2 multiCollapseExample3">Add User</button>
+            </div>
+            </p>
+
+            <form style="padding-left: 5%" action="#" th:action="@{/users}" method="post">
+                <div>
+                    <div class="row" style="padding-right: 0%">
+                        <div class="col" style="margin-right: 2%">
+                            <div class="collapse multi-collapse">
+                                <div class="row">
+                                    <input type="text" class="form-control" name="newUserName" placeholder="Enter User name">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col" style="margin-right: 2%">
+                            <div class="collapse multi-collapse">
+                                <div class="row">
+                                    <input type="text" class="form-control" name="newUserLogin" placeholder="Enter User login">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col" style="margin-right: 2%" >
+                            <div class="collapse multi-collapse">
+                                <div class="row">
+                                    <input type="text" class="form-control" name="newUserPassword" placeholder="Enter User password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="collapse multi-collapse" style="padding-right: 5%">
+                                <div class="input-group mb-3">
+                                    <select name="roleParam" class="custom-select" id="inputGroupSelect01">
+                                        <option selected>Choose Role</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="USER">USER</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseExample4">
+                                <div>
+                                    <a><button class="btn btn-secondary butn" >Submit to DB</button></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+</div>
+<!--FOOTER-->
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+    <a class="navbar-brand"></a>
+</nav>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

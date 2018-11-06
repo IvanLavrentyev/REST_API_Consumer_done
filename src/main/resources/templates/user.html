@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>User page</title>
+</head>
+<body>
+<!--HEADER-->
+<nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Hello, <span th:text="${user.name}"></span></span>
+        <a style="color:white; alignment: right"  class="text" th:href="@{/logout}">logout</a>
+    </nav>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <br>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">LOGIN</th>
+                    <th scope="col">PASSWORD</th>
+                    <th scope="col">ROLES</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:utext = "${user.id}"></td>
+                    <td th:utext = "${user.name}"></td>
+                    <td th:utext = "${user.login}"></td>
+                    <td th:utext = "${user.password}"></td>
+                    <td th:utext = "${user.mockRole}"></td>
+                    <!--<td th:utext = "${#strings.substring-->
+                    <!--(user.userRoles,1,#strings.indexOf(user.userRoles,']'))}"></td>-->
+                    <td>
+                        <div class="float-md-right" style="padding-right: 65%">
+                            <button class="btn btn-secondary" type="button"
+                                    data-toggle="collapse" data-target=".multi-collapse"
+                                    aria-expanded="false"
+                                    aria-controls="multiCollapseExample1 multiCollapseExample2 multiCollapseExample3">Edit Data</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <form style="padding-left: 5%" action="#" th:action="@{'/users/update/'+${user.id}}" th:object="${user}" method="post">
+                <input type="hidden" th:field = "${user.id}">
+                <div>
+                    <div class="row">
+                        <div class="col" style="margin-right: 2%">
+                            <div class="collapse multi-collapse">
+                                <div class="row">
+                                    <input type="text" class="form-control" name="newUserName" placeholder="Enter User name">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col" style="margin-right: 2%">
+                            <div class="collapse multi-collapse">
+                                <div class="row">
+                                    <input type="text" class="form-control" name="newUserLogin" placeholder="Enter User login">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col" style="margin-right: 2%">
+                            <div class="collapse multi-collapse">
+                                <div class="row">
+                                    <input type="text" class="form-control" name="newUserPassword" placeholder="Enter User password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseExample4">
+                                <div>
+                                    <a><button class="btn btn-secondary butn">Submit</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+
+<!--FOOTER-->
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+    <a class="navbar-brand"></a>
+</nav>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
