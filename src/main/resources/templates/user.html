@@ -41,20 +41,24 @@
                     <td th:utext = "${user.login}"></td>
                     <td th:utext = "${user.password}"></td>
                     <td th:utext = "${user.mockRole}"></td>
-                    <!--<td th:utext = "${#strings.substring-->
-                    <!--(user.userRoles,1,#strings.indexOf(user.userRoles,']'))}"></td>-->
                     <td>
-                        <div class="float-md-right" style="padding-right: 65%">
-                            <button class="btn btn-secondary" type="button"
+                        <div class="row">
+                            <button class="btn btn-secondary" type="button" style="margin-right:1%"
                                     data-toggle="collapse" data-target=".multi-collapse"
                                     aria-expanded="false"
                                     aria-controls="multiCollapseExample1 multiCollapseExample2 multiCollapseExample3">Edit Data</button>
+
+                            <a class="btn btn-danger" type="button"  style="margin-right: 1%"
+                                    th:style="${#strings.contains('USER', currentUserMockRoles)} ? 'display:block' : 'display:none'"
+                                    th:href="@{'/user/delete/'+${user.id}}">Delete</a>
                         </div>
                     </td>
                 </tr>
+
                 </tbody>
-            </table>
-            <form style="padding-left: 5%" action="#" th:action="@{'/users/update/'+${user.id}}" th:object="${user}" method="post">
+
+            </table>'
+            <form style="padding-left: 5%" action="#" th:action="@{'/user/update/'+${user.id}}" th:object="${user}" method="post">
                 <input type="hidden" th:field = "${user.id}">
                 <div>
                     <div class="row">

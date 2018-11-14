@@ -1,14 +1,10 @@
 package com.rest.consumer.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import javax.annotation.Generated;
-import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -37,7 +33,6 @@ public class User implements Serializable {
         this.name = name;
         this.login = login;
         this.password = password;
-
     }
 
     public void setId(long id) {

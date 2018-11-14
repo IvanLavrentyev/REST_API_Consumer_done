@@ -16,7 +16,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <span>
             <span class="navbar-brand mb-0 h1">ADMIN PAGE</span>
-            <!--<a style="color:white; alignment: right"  class="text" th:href="@{/logout}">logout</a>-->
+            <a style="color:white; alignment: right"  class="text" th:href="@{/logout}">logout</a>
         </span>
 
     </nav>
@@ -47,11 +47,9 @@
                     <td th:utext = "${user.login}"></td>
                     <td th:utext = "${user.password}"></td>
                     <td th:utext="${user.mockRole}"></td>
-                    <!--<td th:utext = "${#strings.substring-->
-                    <!--(user.roles,1,#strings.indexOf(user.roles,']'))}"></td>-->
                     <td>
-                        <a type="button" class="btn btn-success" th:href="@{'/users/get/'+${user.id}}">View</a>
-                        <a type="button" class="btn btn-danger" th:href="@{'/users/delete/'+${user.id}}">Delete</a>
+                        <a type="button" class="btn btn-success" th:href="@{'/user/get/'+${user.id}}">View</a>
+                        <a type="button" class="btn btn-danger" th:href="@{'/user/delete/'+${user.id}}">Delete</a>
                     </td>
                 </tr>
                 </tbody>
